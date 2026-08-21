@@ -70,7 +70,7 @@ For any of the following scenarios, the AI must propose a plan before proceeding
 - System architectural refactoring
 - Adding new external dependencies
 
-**Token Saving Principle**: If the user has already explicitly instructed what to do (e.g., "Add feature X"), the AI can briefly explain the plan in chat instead of forcing the creation of a full artifact, unless the user requests it.
+**Efficiency Principle**: If the user has already explicitly instructed what to do (e.g., "Add feature X"), the AI can briefly explain the plan in chat instead of forcing the creation of a full artifact, unless the user requests it.
 
 ---
 

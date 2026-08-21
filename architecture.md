@@ -70,7 +70,7 @@ Applicable to BFF (Backend For Frontend) or API Proxy projects.
 - **Allowed**: Limited in-memory caching for high-frequency, non-sensitive read APIs. Do not store user-sensitive data across requests.
 
 #### 3-B-2. Token & State Management
-- Authentication tokens must be stored in the **Frontend `localStorage`** (or HttpOnly cookies, depending on requirements).
+- Authentication tokens should preferably be stored in **HttpOnly cookies** (resistant to XSS attacks). Use **`localStorage`** only when cookie-based auth is not feasible (e.g., strict cross-domain scenarios with no cookie support).
 - The frontend Axios interceptor injects the `Authorization: Bearer <token>` header.
 - The backend proxy **forwards requests verbatim** without modifying token payloads.
 

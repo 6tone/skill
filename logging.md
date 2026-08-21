@@ -75,7 +75,7 @@ app.use((req, res, next) => {
 });
 
 // In service layer — pass requestId through context, not global state
-logger.info('Processing bet', { requestId: ctx.requestId, betId });
+logger.info('Processing order', { requestId: ctx.requestId, orderId });
 ```
 
 ---
@@ -141,7 +141,7 @@ All API error responses must use a **consistent error envelope** with a project-
 | Domain | Example Codes |
 |:---|:---|
 | `AUTH` | `AUTH_TOKEN_EXPIRED`, `AUTH_INVALID_CREDENTIALS`, `AUTH_SESSION_KICKED` |
-| `BET` | `BET_INSUFFICIENT_BALANCE`, `BET_MARKET_CLOSED`, `BET_DUPLICATE_ORDER` |
+| `ORDER` | `ORDER_INSUFFICIENT_BALANCE`, `ORDER_ITEM_OUT_OF_STOCK`, `ORDER_DUPLICATE` |
 | `USER` | `USER_NOT_FOUND`, `USER_ALREADY_EXISTS` |
 | `SYSTEM` | `SYSTEM_DB_UNAVAILABLE`, `SYSTEM_UPSTREAM_TIMEOUT` |
 
@@ -171,7 +171,7 @@ class AppError extends Error {
   }
 }
 
-throw new AppError('BET_INSUFFICIENT_BALANCE', 422, 'Wallet balance is below the required bet amount.');
+throw new AppError('ORDER_INSUFFICIENT_BALANCE', 422, 'Account balance is below the required order amount.');
 ```
 
 ---

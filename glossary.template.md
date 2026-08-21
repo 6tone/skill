@@ -22,9 +22,9 @@ description: Project-specific terminology glossary. Defines domain terms, status
 
 | Term | Definition | Module / Owner |
 |:---|:---|:---|
-| `Bet` | A single wager placed by a user on a game round | `services/betService` |
-| `Settlement` | The process of calculating and distributing payouts after a round closes | `services/settlementService` |
-| `Debit` | Deducting funds from user wallet before a bet is confirmed | `services/walletService` |
+| `Order` | A single purchase request submitted by a user | `services/orderService` |
+| `Invoice` | A billing record generated after an order is confirmed | `services/invoiceService` |
+| `Charge` | Deducting funds from user account before an order is processed | `services/paymentService` |
 
 ---
 
@@ -39,10 +39,10 @@ description: Project-specific terminology glossary. Defines domain terms, status
 
 | Code | Meaning | Used In |
 |:---|:---|:---|
-| `PENDING` | Bet placed, awaiting round result | `BetModel.status` |
-| `WIN` | Bet won; payout issued | `BetModel.result` |
-| `LOSE` | Bet lost; no payout | `BetModel.result` |
-| `DRAW` | Round voided; bet refunded | `BetModel.result` |
+| `PENDING` | Order placed, awaiting processing | `OrderModel.status` |
+| `COMPLETED` | Order fulfilled successfully | `OrderModel.status` |
+| `CANCELLED` | Order cancelled by user or system | `OrderModel.status` |
+| `REFUNDED` | Payment reversed after cancellation | `OrderModel.status` |
 
 ---
 
