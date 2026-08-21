@@ -25,7 +25,7 @@ All skill files are located in the **same directory as this INDEX.md**.
 |:---|:---|:---|
 | `sop.md` | `ai-sop` | Trust Boundary, Authorization Flow, AI Persona |
 | `architecture.md` | `architecture` | Directory Rules, SoC, DB/No-DB Branches |
-| `coding.md` | `coding-standards` | Layered Architecture, SRP, Naming, Error Handling, React Hooks |
+| `coding.md` | `coding-standards` | Layered Architecture, SRP, Naming, Error Handling (JS/React examples) |
 | `security.md` | `security-guidelines` | Data Masking, Secrets Management, CORS, Rate Limiting |
 | `danger-zone.md` | `danger-zone` | Prohibited Terminal / Git / DB Operations |
 | `logging.md` | `logging` | Log Levels, Structured JSON, PII Masking, Error Code Design |
@@ -133,5 +133,13 @@ If the task matches **no category**, default to:
 
 - `INDEX.md` itself — you are already reading it.
 - `README.md` — human-facing documentation, not AI rules.
-- `glossary.template.md` — reference only; do not load unless you need term definitions.
 - All skill files at once — this defeats the purpose of this index.
+
+---
+
+### 📖 Reference — Domain Terminology
+
+Triggers: unfamiliar domain term encountered, naming a new concept, resolving naming conflict between similar terms  
+→ READ: `glossary.template.md` *(only after the project team has filled in the `[...]` placeholders)*
+
+> If the glossary is still in template form (placeholders not filled), skip it and ask the user to define the term.
