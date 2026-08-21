@@ -63,9 +63,9 @@ Vague phrases such as "current progress" or "current state" — if uncommitted c
 
 | Nature of Changes | Language | Example |
 |:---|:---|:---|
-| Functional changes | **Traditional Chinese** | `新增共用元件 dialog` |
-| Technical / Code naming | **English** | `update import paths for OAuthConfig` |
-| Mixed changes | Determine by primary intent, Chinese takes priority | — |
+| Functional changes (user-facing behavior) | **Traditional Chinese** | `新增共用元件 dialog` |
+| Technical / Code naming (internal refactor, rename) | **English** | `update import paths for OAuthConfig` |
+| Mixed changes | Use Chinese if a user-facing behavior changed; use English if purely internal/technical | — |
 
 - Begin directly with a verb; do not end the subject with a period.
 

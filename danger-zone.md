@@ -24,11 +24,11 @@ For any package management operations, the AI **must propose a plan first and wa
 
 ## 2. File System Protection
 
-| Prohibited Operation | Alternative Approach |
-|:---|:---|
-| `rm -rf [Any directory except node_modules]` | List target files, request confirmation, then delete |
-| PowerShell `Remove-Item -Recurse -Force` | Same as above |
-| Modifying or deleting hidden directories (`.git/`, `.env`, `.vscode/`) | Strictly Prohibited. No alternatives. |
+| Prohibited Operation | Platform | Alternative Approach |
+|:---|:---|:---|
+| `rm -rf [Any directory except node_modules]` | Linux / macOS / Git Bash | List target files, request confirmation, then delete |
+| `Remove-Item -Recurse -Force` | Windows PowerShell | Same as above |
+| Modifying or deleting hidden directories (`.git/`, `.env`, `.vscode/`) | All | Strictly Prohibited. No alternatives. |
 
 > Deleting `node_modules` using `rm -rf` / `Remove-Item` is allowed (as it can be recreated), but still requires informing the user beforehand.
 
@@ -74,12 +74,12 @@ The following read-only git commands may be executed autonomously without user a
 
 ## 5. System-Level Operation Prohibitions
 
-| Prohibited Operation | Description |
-|:---|:---|
-| `kill -9 <PID>` (Non-project process) | Prohibited from terminating unknown processes |
-| `taskkill /F /PID <PID>` (Windows) | Same as above |
-| `export VAR=value` modifying system env vars | Project variables must be written to the `.env` file |
-| PowerShell `[Environment]::SetEnvironmentVariable` | Same as above |
+| Prohibited Operation | Platform | Description |
+|:---|:---|:---|
+| `kill -9 <PID>` (Non-project process) | Linux / macOS | Prohibited from terminating unknown processes |
+| `taskkill /F /PID <PID>` | Windows PowerShell | Same as above |
+| `export VAR=value` modifying system env vars | Linux / macOS / Git Bash | Project variables must be written to the `.env` file |
+| `[Environment]::SetEnvironmentVariable` | Windows PowerShell | Same as above |
 
 ---
 

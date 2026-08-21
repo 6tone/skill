@@ -122,6 +122,10 @@ Always generate a PR body using this structure:
 
 ## 7. GitHub CLI (Optional, If gh is Installed)
 
+> 📌 **Platform Note**: Use the **Windows PowerShell** section if you are on Windows (including Git Bash).
+> The Linux/macOS section uses HEREDOC syntax which is incompatible with PowerShell.
+> Per `git-commit.md` anti-patterns, never use HEREDOC for multi-line git operations on Windows.
+
 ### Windows PowerShell (Primary)
 
 ```powershell
@@ -152,6 +156,8 @@ Remove-Item "$env:TEMP\pr_body.md"
 gh --version
 
 # Step 1: Write the PR body to a temp file (uses workspace scratch dir or /tmp)
+# Note: HEREDOC (<< 'EOF') is for Linux/macOS bash only.
+# Do NOT use HEREDOC in Windows PowerShell or Git Bash — use the PowerShell section above instead.
 cat > ./scratch_pr_body.md << 'EOF'
 [paste the generated PR body here]
 EOF
