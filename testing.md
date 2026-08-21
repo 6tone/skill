@@ -1,6 +1,6 @@
 ---
 name: testing
-description: Write, run, and debug tests following AAA structure with proper mocking and coverage targets. Use when adding new features that require tests, fixing failing tests, setting up the test environment, or determining which test type to write for a given scenario.
+description: Write, run, and debug tests following AAA structure with proper mocking and coverage targets. Examples use Jest + Nock for Node.js and Mongoose for MongoDB; adapt the test runner, mock library, and DB setup to your stack (e.g. Vitest, pytest, Go testing). Use when adding new features that require tests, fixing failing tests, setting up the test environment, or determining which test type to write for a given scenario.
 ---
 
 # Testing — Testing Execution Handbook
@@ -31,6 +31,11 @@ What are you testing?
 ---
 
 ## 2. Environment Setup (Run Once)
+
+> 📌 **Stack Note**: This setup template uses **Jest + dotenv** (Node.js) and **Mongoose** (MongoDB).
+> If your project uses a different test runner (Vitest, pytest, Go `testing`, etc.),
+> replace `jest` commands with your runner's equivalent.
+> If `HAS_DATABASE = false` or you use a different DB driver, remove or replace the DB connection block in `tests/setup.js`.
 
 ### Required files
 

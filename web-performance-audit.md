@@ -57,6 +57,11 @@ lighthouse https://your-domain.com --output json --output-path ./lh-report.json
 
 ### 4a. Bundle Analysis (React / Vite / Webpack)
 
+> 📌 **Framework Note**: Bundle analysis commands below target React (Vite/Webpack/CRA).
+> For **Vue**: use `vite-bundle-visualizer` (same as Vite) or `webpack-bundle-analyzer`.
+> For **Angular**: use `ng build --stats-json` then `webpack-bundle-analyzer dist/stats.json`.
+> For **Svelte**: use `rollup-plugin-visualizer`.
+
 ```bash
 # Vite — analyze bundle
 npx vite-bundle-visualizer
@@ -94,10 +99,11 @@ Open DevTools → Network tab → throttle to "Slow 4G":
 ### Fix LCP (Largest Contentful Paint)
 
 ```jsx
-// Preload hero image
+// Preload hero image (works in any framework)
 <link rel="preload" as="image" href="/hero.webp" />
 
 // React: Use fetchpriority on hero image
+// Vue/Svelte: same HTML attribute applies
 <img src="/hero.webp" fetchpriority="high" alt="Hero" />
 
 // Convert to WebP
@@ -108,6 +114,8 @@ Open DevTools → Network tab → throttle to "Slow 4G":
 
 ```jsx
 // Code-split heavy routes (React lazy + Suspense)
+// Vue equivalent: defineAsyncComponent(() => import('./HeavyPage.vue'))
+// Angular equivalent: loadComponent in route config
 const HeavyPage = React.lazy(() => import('./pages/HeavyPage'));
 
 // Defer non-critical scripts

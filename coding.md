@@ -1,6 +1,6 @@
 ---
 name: coding-standards
-description: Apply universal coding conventions, naming rules, error handling patterns, and quality standards. Use when writing new functions, refactoring existing code, adding API endpoints, handling async operations, or reviewing naming consistency.
+description: Apply coding conventions, naming rules, error handling patterns, and quality standards for Node.js/React projects. Code examples are in JavaScript — adapt the patterns to your language and framework as needed. Use when writing new functions, refactoring existing code, adding API endpoints, handling async operations, or reviewing naming consistency.
 ---
 
 # Coding — Coding Standards
@@ -57,15 +57,15 @@ When dealing with business states (such as win/loss outcomes, order status, or t
 
 ```js
 // ❌ Prohibited: Using mathematical shortcuts to infer business status
-if (amount > 0) { /* Guessing it is a win? */ }
+if (delta > 0) { /* Guessing it is a completed order? */ }
 
 // ✅ Required: Explicit boolean flags or string status codes
-const isWin = settlement.result === 'WIN';
-const isRefund = settlement.result === 'DRAW';
-if (isWin) { /* ... */ }
+const isCompleted = order.status === 'COMPLETED';
+const isRefunded = order.status === 'REFUNDED';
+if (isCompleted) { /* ... */ }
 ```
 
-**Rule**: Future state additions (e.g., "draw and refund") should not break existing conditional logic.
+**Rule**: Future state additions (e.g., `PARTIAL_REFUND`) should not break existing conditional logic.
 
 ---
 
