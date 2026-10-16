@@ -20,7 +20,7 @@ This document defines universal security requirements for all projects.
 ## 2. Data Masking & Logging Guidelines
 
 PII (Personally Identifiable Information) or authentication tokens must NEVER appear in plain text in any logs.
-Please refer to `logging.md` Section 3 for the complete PII masking rules and implementation guidelines.
+Please refer to the `logging` skill, Section 3, for the complete PII masking rules and implementation guidelines.
 
 ```js
 // ✅ Correct: Log non-sensitive identifiers only
@@ -97,7 +97,7 @@ Required for systems enforcing single active session per user account:
 
 ### 6-B. Stateless Proxy / BFF (HAS_DATABASE = false)
 
-> 📌 Do **not** use Redis session storage in stateless projects. Use the `X-Server-Id` header mechanism defined in `architecture.md` Section 3-B-3 instead.
+> 📌 Do **not** use Redis session storage in stateless projects. Use the `X-Server-Id` header mechanism defined in the `architecture` skill, Section 3-B-3, instead.
 
 - The backend generates a unique `X-Server-Id` (UUID) upon startup and attaches it to all HTTP responses.
 - The frontend Axios interceptor monitors the `X-Server-Id` header.

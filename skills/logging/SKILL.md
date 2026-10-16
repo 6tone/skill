@@ -45,7 +45,7 @@ All logs **must** be structured JSON in production environments. Plain text logs
 {
   "level": "info",
   "timestamp": "2026-06-15T08:30:00.000Z",
-  "service": "[PROJECT_NAME]",
+  "service": "my-service",
   "requestId": "uuid-v4",
   "message": "User login successful",
   "userId": "u_12345"
@@ -56,7 +56,7 @@ All logs **must** be structured JSON in production environments. Plain text logs
 |:---|:---:|:---|
 | `level` | ✅ | Log severity level |
 | `timestamp` | ✅ | ISO 8601 UTC format |
-| `service` | ✅ | Project/service name from `[PROJECT_NAME]` |
+| `service` | ✅ | Project/service name declared in AGENTS.md (Project Context) |
 | `requestId` | ✅ | Unique per-request ID for log correlation |
 | `message` | ✅ | Human-readable description |
 | `userId` | When applicable | Non-sensitive user identifier (ID, not email) |
@@ -186,7 +186,7 @@ const winston = require('winston');
 
 const logger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'info',
-  defaultMeta: { service: process.env.SERVICE_NAME || '[PROJECT_NAME]' },
+  defaultMeta: { service: process.env.SERVICE_NAME || 'my-service' },
   transports: [
     new winston.transports.Console({
       format: process.env.NODE_ENV === 'production'
@@ -213,7 +213,7 @@ const pino = require('pino');
 
 const logger = pino({
   level: process.env.LOG_LEVEL || 'info',
-  base: { service: '[PROJECT_NAME]' },
+  base: { service: 'my-service' },
   timestamp: pino.stdTimeFunctions.isoTime,
   redact: {
     paths: ['req.headers.authorization', '*.password', '*.token'],

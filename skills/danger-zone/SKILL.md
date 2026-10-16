@@ -43,7 +43,7 @@ The following read-only git commands may be executed autonomously without user a
 | Allowed Command | Purpose |
 |:---|:---|
 | `git status` / `git status --short` | Check working tree state |
-| `git diff --cached` | Inspect staged changes (required by `git-commit.md`) |
+| `git diff --cached` | Inspect staged changes (required by the `git-commit` skill) |
 | `git log --oneline` / `git log -n <N>` | Read commit history |
 | `git branch --show-current` | Identify current branch |
 | `git remote get-url origin` | Detect remote platform (GitHub / GitLab) |

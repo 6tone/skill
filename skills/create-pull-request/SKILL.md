@@ -124,7 +124,7 @@ Always generate a PR body using this structure:
 
 > 📌 **Platform Note**: Use the **Windows PowerShell** section if you are on Windows (including Git Bash).
 > The Linux/macOS section uses HEREDOC syntax which is incompatible with PowerShell.
-> Per `git-commit.md` anti-patterns, never use HEREDOC for multi-line git operations on Windows.
+> Per the `git-commit` skill anti-patterns, never use HEREDOC for multi-line git operations on Windows.
 
 ### Windows PowerShell (Primary)
 

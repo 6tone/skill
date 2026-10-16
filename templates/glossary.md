@@ -1,12 +1,8 @@
----
-name: glossary
-description: Project-specific terminology glossary. Defines domain terms, status codes, and module boundaries to ensure consistent naming across AI-generated code and human-written code. Read this file when encountering unfamiliar domain terms or when naming new concepts.
----
-
 # Glossary — Project Terminology
 
-> 📌 **Instructions**: Replace all `[...]` placeholders with your project's actual terms.
-> Keep this file updated whenever a new domain concept is introduced.
+> 📌 **Instructions**: This file is installed to `docs/glossary.md` and is owned by the project (re-running install never overwrites it).
+> Replace all `[...]` placeholders with your project's actual terms, and keep it updated whenever a new domain concept is introduced.
+> `AGENTS.md` points agents here when they meet an unfamiliar term or name a new concept.
 
 ---
 
@@ -59,7 +55,7 @@ description: Project-specific terminology glossary. Defines domain terms, status
 |:---|:---|:---|
 | `BFF` | Backend For Frontend | Used for proxy-only backends with no DB |
 | `PII` | Personally Identifiable Information | Must be masked in all logs |
-| `CWV` | Core Web Vitals | LCP, INP, CLS — see `web-performance-audit.md` |
+| `CWV` | Core Web Vitals | LCP, INP, CLS — see the `web-performance-audit` skill |
 
 ---
 

@@ -37,8 +37,8 @@ Request → Controller → Service → [Repository → DB]
 
 ```js
 // ✅ Correct: Use an asyncHandler wrapper
-// 📌 Replace '[PROJECT_UTIL_DIR]' with your actual util path (e.g., '../lib/errorHandler')
-const asyncHandler = require('../[PROJECT_UTIL_DIR]/errorHandler');
+// 📌 Use the util directory declared in AGENTS.md (Project Context), e.g. '../lib/errorHandler'
+const asyncHandler = require('../lib/errorHandler');
 
 router.get('/users', asyncHandler(async (req, res) => {
   const users = await UserService.getAll();

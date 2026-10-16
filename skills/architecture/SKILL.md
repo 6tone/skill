@@ -11,29 +11,22 @@ This document enforces Separation of Concerns (SoC) and directory discipline for
 
 ## 1. System Architecture Declaration (Required for Each Project)
 
-At project startup, explicitly declare the following architectural parameters to determine the active rules and branches:
+Each project declares its architecture parameters in the **Project Context** section of its root `AGENTS.md` (Frontend, Backend, `HAS_DATABASE`, `DB_TYPE`, Role, util directory). Read them there to determine which rules and branches below are active.
 
-```
-[PROJECT_NAME] Architecture:
-- Frontend : [e.g., React SPA / Next.js / None]
-- Backend  : [e.g., Node.js Express / Fastify]
-- Database : [HAS_DATABASE = true/false]
-             [DB_TYPE = MongoDB / PostgreSQL / Redis / None]
-- Role     : [e.g., Game Provider / BFF Proxy / Fullstack App]
-```
+If `AGENTS.md` has no Project Context or it still contains `[...]` placeholders, ask the user to fill it in before applying the branch-specific rules.
 
 ---
 
 ## 2. General Layered Architecture
 
-Please refer to `coding.md` Section 1 for the detailed layered architecture responsibilities and strict prohibitions.
+Please refer to the `coding-standards` skill, Section 1, for the detailed layered architecture responsibilities and strict prohibitions.
 All projects must strictly follow the `Request → Controller/Route → Service → [Repository/Model → DB]` flow.
 
 ---
 
 ## 3. 🔀 Database Architecture Branches
 
-Different rules apply based on the project's `[HAS_DATABASE]` configuration:
+Different rules apply based on the project's `HAS_DATABASE` value (declared in `AGENTS.md`):
 
 ---
 
@@ -85,7 +78,7 @@ Applicable to BFF (Backend For Frontend) or API Proxy projects.
 
 ## 4. DRY Principle (General)
 
-**Before writing any utility function**, the AI **must check `[PROJECT_UTIL_DIR]`** and existing helpers in `lib/` first:
+**Before writing any utility function**, the AI **must check the util directory declared in `AGENTS.md`** and existing helpers in `lib/` first:
 - If a matching utility exists: Reuse it via import. Duplication is strictly prohibited.
 - If it does not exist: You may create it in the appropriate utilities directory.
 
@@ -112,12 +105,12 @@ Common helpers that must not be duplicated:
 
 ---
 
-## 7. Directory Map (To Be Completed for Each Project)
+## 7. Directory Map
 
-> 📌 Replace the template below with the **actual directory tree** of your project. This guides all AI file operations and SoC enforcement.
+> 📌 The project's **actual** directory tree lives in the **Directory Map** section of its root `AGENTS.md`. That map is authoritative for all AI file operations and SoC enforcement. The tree below is only the reference layout it is derived from.
 
 ```
-[PROJECT_NAME]/                  ← Replace with your project root
+project-root/
 ├── src/                         ← (or remove if flat structure)
 │   ├── routes/                  ← Controllers / HTTP entry points
 │   ├── services/                ← Business logic layer
@@ -125,7 +118,7 @@ Common helpers that must not be duplicated:
 │   ├── repositories/            ← DB query encapsulation   (HAS_DATABASE = true only)
 │   └── middleware/              ← Auth, error handler, rate limit
 ├── lib/                         ← Generic utilities & drivers (no domain logic)
-│   └── [PROJECT_UTIL_DIR]/      ← e.g., server-util, helpers
+│   └── helpers/                 ← Util directory (name declared in AGENTS.md)
 ├── tests/
 │   └── integration/             ← Supertest-based API tests
 ├── .env                         ← Local only; never commit
@@ -133,7 +126,7 @@ Common helpers that must not be duplicated:
 └── package.json
 ```
 
-**Instructions**:
+**Instructions** (apply to the map in `AGENTS.md`, not to this skill):
 1. Delete unused layers (e.g., remove `models/` and `repositories/` if `HAS_DATABASE = false`).
-2. Add project-specific folders that don't fit the template above.
-3. Keep this map updated whenever a new top-level directory is approved and created.
+2. Add project-specific folders that don't fit the reference layout.
+3. Keep the map updated whenever a new top-level directory is approved and created.
